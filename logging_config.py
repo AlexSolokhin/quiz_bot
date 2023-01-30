@@ -22,7 +22,7 @@ dict_config = {
             'level': 'ERROR',
             'handlers': ['time_rotating_file_handler'],
         },
-        'bot_logger': {
+        'admin_logger': {
             'level': 'INFO',
             'handlers': ['time_rotating_file_handler']
         },

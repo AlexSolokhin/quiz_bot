@@ -11,7 +11,6 @@ async def on_startup(_):
 async def on_shutdown(_):
     bot_logger.info('Бот оффлайн')
 
-# handlers.registration_handlers.register_registration_handlers(dp)
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True, on_startup=on_startup, on_shutdown=on_shutdown)

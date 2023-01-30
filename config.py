@@ -9,8 +9,11 @@ if not find_dotenv():
 else:
     load_dotenv()
 
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(ROOT_DIR, 'quiz_db')
+
 BOT_TOKEN = os.getenv('BOT_TOKEN')
-DB = SqliteDatabase('quiz_database/quiz_db')
+DB = SqliteDatabase(DB_PATH)
 logging.config.dictConfig(dict_config)
 bot_logger = logging.getLogger('admin_logger')
 db_logger = logging.getLogger('bd_logger')

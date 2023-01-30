@@ -1,6 +1,7 @@
 from config import DB, db_logger
 from quiz_database.models import User, Quiz, QuizResult
 from peewee import InternalError
+from datetime import datetime
 
 
 async def create_user_if_not_exist(tg_id: int, tg_username: str) -> None:
@@ -116,7 +117,11 @@ async def save_results(quiz_id: int, user_id: int, answers: dict, scores: int) -
     """
     try:
         with DB:
-            results = QuizResult(quiz_id=quiz_id, user_id=user_id, answers=answers, scores=scores)
+            results = QuizResult(quiz_id=quiz_id,
+                                 user_id=user_id,
+                                 answers=answers,
+                                 scores=scores,
+                                 finished=datetime.now())
             results.save()
     except InternalError as exc:
         db_logger.error(f'Error while checking user existence: {exc}')
